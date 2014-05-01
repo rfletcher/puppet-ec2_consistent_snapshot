@@ -49,6 +49,6 @@ class ec2_consistent_snapshot (
   file { '/etc/profile.d/ec2-consistent-snapshot.sh':
     ensure  => $file_ensure,
     content => template('ec2_consistent_snapshot/ec2-consistent-snapshot.sh.erb'),
-    mode    => 0644,
+    mode    => '0644',
   }
 }
