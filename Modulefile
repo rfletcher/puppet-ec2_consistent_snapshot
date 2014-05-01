@@ -1,0 +1,7 @@
+name         'rfletcher-ec2_consistent_snapshot'
+version      '0.0.1'
+license      'MIT License'
+summary      'A puppet module for ec2-consistent-snapshot'
+description  'Install or remove ec2-consistent-snapshot'
+project_page 'https://github.com/rfletcher/puppet-ec2_consistent_snapshot'
+dependency   'puppetlabs/apt', '>= 1.4.2'
