@@ -22,6 +22,7 @@ class ec2_consistent_snapshot::package (
   $vcs_provider  = undef,
   $vcs_url       = undef,
   $vcs_rev       = undef,
+  $vcs_path      = undef,
 ) {
 
   # Ubuntu provides a package in a PPA repo.  Default to that unless
@@ -64,7 +65,7 @@ class ec2_consistent_snapshot::package (
       provider => $vcs_provider,
       source   => $vcs_url,
       revision => $vcs_rev,
-      path     => '/opt/ec2-consistent-snapshot',
+      path     => $vcs_path,
       user    => 'root'
     }
 

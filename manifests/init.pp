@@ -46,6 +46,7 @@ class ec2_consistent_snapshot (
   $vcs_provider  = 'git',
   $vcs_url       = 'https://github.com/alestic/ec2-consistent-snapshot.git',
   $vcs_rev       = 'master',
+  $vcs_path      = '/opt/ec2-consistent-snapshot',
   $access_key    = undef,
   $secret        = undef,
 ) {
@@ -64,7 +65,8 @@ class ec2_consistent_snapshot (
     force_use_vcs => $force_use_vcs,
     vcs_provider  => $vcs_provider,
     vcs_url       => $vcs_url,
-    vcs_rev       => $vcs_rev
+    vcs_rev       => $vcs_rev,
+    vcs_path      => $vcs_path
   }
 
   file { '/etc/profile.d/ec2-consistent-snapshot.sh':
