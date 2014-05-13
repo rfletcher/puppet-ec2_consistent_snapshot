@@ -104,5 +104,6 @@ class ec2_consistent_snapshot (
 
   Anchor['ec2_consistent_snapshot::begin'] ->
   Class['ec2_consistent_snapshot::package'] ->
+  Ec2_consistent_snapshot::Creds[$creds_file] ->
   Anchor['ec2_consistent_snapshot::end']
 }
