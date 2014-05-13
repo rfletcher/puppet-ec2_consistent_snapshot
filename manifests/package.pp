@@ -56,9 +56,7 @@ class ec2_consistent_snapshot::package (
       default : {}
     }
 
-    @package { $dep_list :
-      ensure => present
-    }
+    ensure_resource( package, $dep_list )
 
     vcsrepo { 'ec2-consistent-snapshot':
       ensure   => $ensure,
