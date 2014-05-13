@@ -47,6 +47,10 @@ class ec2_consistent_snapshot (
   $vcs_url       = 'https://github.com/alestic/ec2-consistent-snapshot.git',
   $vcs_rev       = 'master',
   $vcs_path      = '/opt/ec2-consistent-snapshot',
+  $owner         = 'root',
+  $group         = 'root',
+  $mode          = '0644',
+  $creds_file    = '/etc/profile.d/ec2-consistent-snapshot.sh',
   $access_key    = undef,
   $secret        = undef,
 ) {
@@ -69,10 +73,19 @@ class ec2_consistent_snapshot (
     vcs_path      => $vcs_path
   }
 
-  file { '/etc/profile.d/ec2-consistent-snapshot.sh':
-    ensure  => $file_ensure,
-    content => template('ec2_consistent_snapshot/ec2-consistent-snapshot.sh.erb'),
-    mode    => '0644',
+  if $access_key != undef and $secret != undef {
+    ec2_consistent_snapshot::creds { $creds_file :
+      ensure     => present,
+      owner      => 'root',
+      group      => 'root',
+      mode       => '0644',
+      access_key => $access_key,
+      secret     => $secret
+    }
+  } else {
+    ec2_consistent_snapshot::creds { $creds_file :
+      ensure => absent
+    }
   }
 
   anchor { 'ec2_consistent_snapshot::end': }
