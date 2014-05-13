@@ -25,8 +25,20 @@
 # [*access_key*]
 #   Your AWS access key.
 #
+#   If this and $secret are set then this class will create a file that can
+#   be sourced in a user environment to set AWS_ACCESS_KEY_ID and
+#   AWS_SECRET_ACCESS_KEY. Alternatively this can be left undefined and
+#   ec2_consistent_snapshot::creds can be used directly which may be
+#   preferable for more complicated setups and security restrictions.
+#
 # [*secret*]
 #   Your AWS secret key.
+#
+#   If this and $access_key are set then this class will create a file that
+#   can be sourced in a user environment to set AWS_ACCESS_KEY_ID and
+#   AWS_SECRET_ACCESS_KEY. Alternatively this can be left undefined and
+#   ec2_consistent_snapshot::creds can be used directly which may be
+#   preferable for more complicated setups and security restrictions.
 #
 # === Examples
 #
