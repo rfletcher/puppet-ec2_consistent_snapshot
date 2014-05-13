@@ -67,13 +67,6 @@ class ec2_consistent_snapshot (
   $secret        = undef,
 ) {
 
-  # Our $ensure is used for both the package the the creds file.
-  $file_ensure = $ensure ? {
-    absent  => absent,
-    purged  => absent,
-    default => present,
-  }
-
   anchor { 'ec2_consistent_snapshot::begin' : }
 
   class { 'ec2_consistent_snapshot::package':
