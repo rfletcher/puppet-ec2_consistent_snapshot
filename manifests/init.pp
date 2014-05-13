@@ -47,6 +47,8 @@ class ec2_consistent_snapshot (
   $access_key = undef,
   $secret     = undef,
 ) {
+  anchor { 'ec2_consistent_snapshot::begin' : }
+
   include apt
 
   apt::ppa { 'ppa:alestic/ppa': }
@@ -77,4 +79,10 @@ class ec2_consistent_snapshot (
       ensure => absent
     }
   }
+
+  anchor { 'ec2_consistent_snapshot::end' : }
+
+  Anchor['ec2_consistent_snapshot::begin'] ->
+  Ec2_consistent_snapshot::Creds[$creds_file] ->
+  Anchor['ec2_consistent_snapshot::end']
 }
