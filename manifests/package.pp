@@ -44,9 +44,9 @@ class ec2_consistent_snapshot::package (
       'redhat', 'centos' : {
         $dep_list = [ 'perl-Net-Amazon-EC2',
                       'perl-File-Slurp',
+                      'perl-DateTime',
                       'perl-DBI',
                       'perl-DBD-MySQL',
-                      'perl-Net-SSLeay',
                       'perl-IO-Socket-SSL',
                       'perl-Time-HiRes',
                       'perl-Params-Validate',
