@@ -40,7 +40,7 @@ class ec2_consistent_snapshot (
     require => [
       Apt::Ppa['ppa:alestic/ppa'],
       Class['apt::update'],
-    ]
+    ],
   }
 
   $file_ensure = $ensure ? {
