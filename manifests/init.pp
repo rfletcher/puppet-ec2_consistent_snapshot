@@ -37,7 +37,10 @@ class ec2_consistent_snapshot (
 
   package { 'ec2-consistent-snapshot':
     ensure  => $ensure,
-    require => Apt::Ppa['ppa:alestic/ppa'],
+    require => [
+      Apt::Ppa['ppa:alestic/ppa'],
+      Class['apt::update'],
+    ]
   }
 
   $file_ensure = $ensure ? {
@@ -49,6 +52,6 @@ class ec2_consistent_snapshot (
   file { '/etc/profile.d/ec2-consistent-snapshot.sh':
     ensure  => $file_ensure,
     content => template('ec2_consistent_snapshot/ec2-consistent-snapshot.sh.erb'),
-    mode    => '0644',
+    mode    => 0644,
   }
 }
