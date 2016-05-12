@@ -36,8 +36,9 @@ class ec2_consistent_snapshot (
   apt::ppa { 'ppa:alestic/ppa': }
 
   package { 'ec2-consistent-snapshot':
-    ensure  => $ensure,
-    require => [
+    ensure          => $ensure,
+    install_options => ['--allow-unauthenticated'],
+    require         => [
       Apt::Ppa['ppa:alestic/ppa'],
       Class['apt::update'],
     ],
